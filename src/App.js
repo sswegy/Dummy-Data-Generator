@@ -1,6 +1,6 @@
 import express from "express";
 import cors from "cors";
-
+import parseRoute from "./RouteParser.js";
 
 const app = express();
 const port = 8080;
@@ -13,7 +13,7 @@ app.post("/t/:test", async (req, res) => {
 })
 
 app.post("/:format/:fields", async (req, res) => {
-    res.sendStatus(200);
+    res.send(await parseRoute(req.params.format, req.params.fields));
 })
 
 app.listen(port, () => {

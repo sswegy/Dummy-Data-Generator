@@ -8,11 +8,11 @@ const connection = mysql.createPool({
 }).promise();
 
 export async function getFirstName() {
-
+    return "name1";
 }
 
 export async function getLastName() {
-
+    return "name2";
 }
 
 export async function getCountry() {
