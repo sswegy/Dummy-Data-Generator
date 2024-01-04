@@ -4,10 +4,10 @@ import * as DatabaseConnector from "./DatabaseConnector.js";
 async function checkAndCallToken(token) {
     let res;
     switch(token) {
-        case "firstnamemale":
+        case "malename":
             res = await DatabaseConnector.getFirstNameMale();
             break;
-        case "firstnamefemale":
+        case "femalename":
             res = await DatabaseConnector.getFirstNameFemale();
             break;
         case "lastname":
@@ -22,8 +22,8 @@ async function checkAndCallToken(token) {
         case "address":
             res = await DatabaseConnector.getAddress();
             break;
-        case "postcode":
-            res = await DatabaseConnector.getPostCode();
+        case "zipcode":
+            res = await DatabaseConnector.getZipCode();
             break;
     }
     return res;
@@ -35,7 +35,10 @@ async function generateJSON(route) {
         for (let i = 0; i < tokens.length; i++) {
             const token = tokens[i]
             const value = await checkAndCallToken(token);
-            result[token] = value;
+            if (token in result) 
+                result[token].push(value);
+            else 
+                result[token] = [value];
         }
         return result;
 }
