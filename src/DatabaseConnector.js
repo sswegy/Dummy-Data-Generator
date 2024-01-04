@@ -26,17 +26,25 @@ export async function getLastName() {
 }
 
 export async function getCountry() {
-
+    const [result] = await connection.query("SELECT country FROM World ORDER BY RAND() LIMIT 1");
+    const country = result[0].country;
+    return country;
 }
 
 export async function getCity() {
-
+    const [result] = await connection.query("SELECT city FROM World ORDER BY RAND() LIMIT 1");
+    const city = result[0].city;
+    return city;
 }
 
 export async function getAddress() {
-
+    const [result] = await connection.query("SELECT address FROM World ORDER BY RAND() LIMIT 1");
+    const address = result[0].address;
+    return address;
 }
 
-export async function getPostCode() {
-    
+export async function getZipCode() {
+    const [result] = await connection.query("SELECT zipCode FROM World ORDER BY RAND() LIMIT 1");
+    const zipcode = result[0].zipCode;
+    return zipcode;
 }
