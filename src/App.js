@@ -13,7 +13,7 @@ app.post("/t/:test", async (req, res) => {
 })
 
 app.post("/:format/:fields", async (req, res) => {
-    res.send(await parseRoute(req.params.format, req.params.fields));
+    res.send(await parseRoute(req.params.format, req.params.fields)).status(200);
 })
 
 app.listen(port, () => {
