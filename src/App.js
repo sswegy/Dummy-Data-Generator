@@ -14,4 +14,4 @@ app.post("/:format/:fields", async (req, res) => {
 
 app.listen(port, () => {
     console.log(`App listening at http://localhost:${port}`);
-  });
+});
